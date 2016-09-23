@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Class</title>
+    <script>
+
+        /* ============= ES5 =============*/
+        function Car(){
+            this.door = 4;
+            this.speed = 150;
+            this.color = 'red';
+        }
+
+        var bmw = new Car();
+        console.log(bmw.door);  // 4
+        Car.prototype.changeColor = function (newColor) {
+            this.color = newColor;
+        };
+
+        function Motorcycle() {
+            this.fuel = 'gas';
+        }
+
+        Motorcycle.prototype = new Car();
+        console.log(Motorcycle);    // this.fuel = 'gas'
+
+        var suzuki = new Motorcycle();
+        console.log(suzuki);
+
+
+        /* ============= ES6 (2015) =============*/
+        class Car {
+            constructor(door){
+                this.door = door;
+                this.speed = 150;
+                this.sell = {
+                    color: 'red',
+                    price: 5000
+                }
+            }
+            offerToBuy(color, price){
+                this.sell.color = color;
+                this.sell.price = price;
+            }
+
+            static sayHi(){
+                return 'Hello my Friend ...!'
+            }
+            static get getSpeed(){
+                return this.speed;
+            }
+        }
+        const audi = new Car(4);
+        console.log(audi);
+        audi.offerToBuy('blue', 4500);
+        console.log(audi);
+
+        console.log(Car.sayHi());       // 'Hello my Friend ...!'
+        console.log(audi.sayHi());      // "TypeError: audi.sayHi is not a function
+
+        class Motorcycle extends Car {
+            constructor(fuel){
+                super();
+                this.fuel = fuel;
+            }
+        }
+        const suzuki = new Motorcycle('gas');
+        console.log(suzuki);
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
