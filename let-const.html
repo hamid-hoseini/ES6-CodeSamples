@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>let and const</title>
+    <script>
+        /*Javascript*/
+        for (var i = 0; i < 10; i++) {
+            console.log(i);
+        }
+        console.log(i); // Will print out 10;
+
+        /*  ES2015  */
+        for (let i = 0; i < 10; i++) {
+            console.log(i);
+        }
+        console.log(i); // Uncaught ReferenceError: i is not defined 
+
+        /*Javascript*/
+        {
+            var user = "Ryan";
+        }
+        console.log(user); // Ryan
+        /*  ES2015  */
+        {
+            let user = "Ryan";
+        }
+        console.log(user); // Uncaught ReferenceError: user is not defined
+
+        /*  ES2015  */
+        const person = 'Ryan';
+        person = 'Kristen'; // Uncaught TypeError: Assignment to constant variable.
+        console.log(person);
+
+        /*  ES2015  */
+        const person = {
+            name: 'Ryan'
+        };
+        person.name = 'Kristen';
+        console.log(person); // {name: 'Kristen'}
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

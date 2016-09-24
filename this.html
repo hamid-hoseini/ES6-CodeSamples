@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The this keyword</title>
+    <script>
+        /*  Javascript ES5  */
+        const person = {
+            firstName: "Ryan",
+            sayName: function() {
+                return this.firstName;
+            }
+        }
+        console.log(person.sayName()); // "Ryan"
+
+        // Inside of the sayName method, the this keyword is bound to the person object.With an arrow function,
+        // the scope of the function will be bound based on where it was defined. The value of this then refers
+        // to the parent scope (window).
+
+        /*  ES2015  */
+        const person = {
+                    firstName: "Ryan",
+                    sayName: () => {
+                    return this.firstName;
+        }
+        }
+        console.log(person.sayName()); // undefined
+
+        ES2015
+        const person = {
+            firstName: 'Ryan',
+            hobbies: ['Robots', 'Games', 'Internet'],
+            showHobbies: function() {
+                this.hobbies.forEach(function(hobby) {
+                    console.log(`${this.firstName} likes ${hobby}`);
+                });
+            }
+        };
+        person.showHobbies();//Uncaught TypeError: Cannot read property 'firstName' of undefined
+
+        //The this in the callback function for our .forEach() method is bound to nothing(in strict mode,
+        // in non strict it will be the window).
+
+        /*  ES2015  */
+        const person = {
+            firstName: 'Ryan',
+            hobbies: ['Robots', 'Games', 'Internet'],
+            showHobbies: function() {
+                this.hobbies.forEach(hobby => {
+                    console.log(`${this.firstName} likes ${hobby}`);
+            });
+            }
+        };
+        person.showHobbies();
+
+        //The this inside of our forEach will be bound to the person object!
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

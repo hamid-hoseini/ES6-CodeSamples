@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spread Operators</title>
+    <script>
+        const numbers = [39, 25, 90, 123];
+        const max = Math.max(numbers);
+        console.log(max); // NaN
+
+        const numbers = [39, 25, 90, 123];
+        const max = Math.max.apply(null, numbers);
+        console.log(max); // 123
+
+        const numbers = [39, 25, 90, 123];
+        const max = Math.max(...numbers);
+        console.log(max); // 123
+
+        const numbersArray1 = [3, 4, 5, 7, 8];
+        const numbersArray2 = [9, 6, 10, 11];
+        const concatArray = [...numbersArray1, ...numbersArray2];
+        console.log(concatArray);   // [3, 4, 5, 7, 8, 9, 6, 10, 11]
+    </script>
+</head>
+<body>
+
+</body>
+</html>

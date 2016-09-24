@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Function</title>
+    <script>
+        /* --- Default Values for Function Parameters in ES6  -- */
+
+        function greet( greeting, name = "hamid"){
+            console.log(greeting, name);
+        }
+
+        function receive(complete){
+            complete();
+        }
+        receive();		// TypeError: undefined is not a function
+
+        function receive(complete){
+            complete();
+        }
+        receive(function(){
+            console.log('completed…!’);
+        });		// completed…!
+
+        function receive(complete = function(){
+            console.log('completed…!’);
+        }){
+            complete();
+        }
+        receive();	// completed…!
+        function receive(complete = ()=> console.log('completed…!’)){
+            complete();
+        }
+        receive();
+
+        //OR:
+        
+        let receive = (complete = ()=> console.log('completed…!’)) => complete();
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
